@@ -2,21 +2,28 @@ import string
 
 
 def encrypt(message, key):
-    alphabet = string.ascii_lowercase
-    shifted_alphabet = alphabet[key:] + alphabet[:key]
+    alphabets = [string.ascii_lowercase, string.ascii_uppercase]
+    final_alphabet=''.join(alphabets)
+    
+    final_shifted_alphabet = ''
+    for alphabet in alphabets:
+        final_shifted_alphabet= final_shifted_alphabet + alphabet[key:] + alphabet[:key]
 
 
-    table = str.maketrans(alphabet,shifted_alphabet)
+    table = str.maketrans(final_alphabet, final_shifted_alphabet)
     print(message.translate(table))
 
 
 
 def decrypt(message, key):
-    shifted_alphabet = string.ascii_lowercase
-    alphabet = shifted_alphabet[key:] + shifted_alphabet[:key]
-
-
-    table = str.maketrans(alphabet, shifted_alphabet)
+    alphabets = [string.ascii_lowercase, string.ascii_uppercase]
+    final_shifted_alphabet=''.join(alphabets)
+    
+    final_alphabet = ''
+    for alphabet in alphabets:
+        final_alphabet= final_alphabet + alphabet[key:] + alphabet[:key]
+    
+    table = str.maketrans(final_alphabet, final_shifted_alphabet)
     print(message.translate(table))
 
 
